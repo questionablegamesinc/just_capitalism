@@ -1455,9 +1455,11 @@ function __ROOM_MGR() {
 __instance_init__(this, ROOM_MGR, null, 1, 0, null, 1, 2);
 this.on_creation = function() {
 with(this) {
+//// Remove banner from index.html (sowwy UwU)
 var a = document.getElementsByTagName('a')[0];
 a.parentNode.removeChild(a);
 
+//// Enable audio
 window.addEventListener('touchstart', () => {
 	for (var i = 0; i < tu_audios.length; i++) {
 		tu_audios[i].audio.muted = false;
@@ -1466,6 +1468,7 @@ window.addEventListener('touchstart', () => {
 	}
 })
 
+//// Go fullscreen to avoid browser detecting swipe gestures
 function goFullscreen() {
     let element = document.documentElement;
     if (element.requestFullscreen) {
@@ -1484,6 +1487,46 @@ function goFullscreen() {
 
 // Wait for the first touch, then go fullscreen
 document.addEventListener("touchstart", goFullscreen, { passive: false });
+
+//// Fix the deprecation warning by adding the new mobile-web-app-capable meta tag
+// Create and append the new mobile-web-app-capable meta tag
+let mobileMetaTag = document.createElement('meta');
+mobileMetaTag.name = "mobile-web-app-capable";
+mobileMetaTag.content = "yes";
+document.head.appendChild(mobileMetaTag);
+
+//// Disable two-fingers gestures (e.g. zooming)
+let isTwoFingerTouching = false;
+let isTwoFingerScrolling = false;
+// Detect two-finger touch on touch-enabled devices
+document.addEventListener('touchstart', function(event) {
+    if (event.touches.length === 2) {
+        isTwoFingerTouching = true;
+        console.log("Two fingers detected.");
+    }
+}, { passive: true });
+document.addEventListener('touchend', function() {
+    isTwoFingerTouching = false;  // Reset when fingers are lifted
+}, { passive: true });
+document.addEventListener('touchmove', function(event) {
+    if (isTwoFingerTouching) {
+        event.preventDefault();  // Block movement or zoom on touch screens
+        console.log("Movement blocked due to two-finger touch.");
+    }
+}, { passive: false });
+// Detect two-finger scroll on trackpad
+window.addEventListener('wheel', function(event) {
+    if (event.ctrlKey || event.deltaY !== 0) {
+        isTwoFingerScrolling = true;
+        console.log("Two-finger scroll detected.");
+    }
+}, { passive: false });
+window.addEventListener('wheel', function(event) {
+    if (isTwoFingerScrolling) {
+        event.preventDefault();  // Block scrolling or zooming on trackpads
+        console.log("Movement blocked due to two-finger scroll.");
+    }
+}, { passive: false });
 
 }
 };
