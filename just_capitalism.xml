@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="UTF-8"?><tululoo version="130" uid="61" title="" advancedscriptmode="0" imgfolder="img" audfolder="aud"><functions/><variables/><comments/><sprites count="5"><sprite name="spr_biden_face" centerx="380" centery="250" collisionshape="Box" collisionradius="420" collisionleft="0" collisionright="840" collisiontop="0" collisionbottom="840"/><sprite name="spr_font" centerx="0" centery="0" collisionshape="Box" collisionradius="32" collisionleft="0" collisionright="64" collisiontop="0" collisionbottom="64"/><sprite name="spr_usa_flag" centerx="0" centery="0" collisionshape="Box" collisionradius="250" collisionleft="0" collisionright="500" collisiontop="0" collisionbottom="750"/><sprite name="spr_boss_face" centerx="337" centery="289" collisionshape="Box" collisionradius="337" collisionleft="0" collisionright="675" collisiontop="0" collisionbottom="578"/><sprite name="spr_boss_face_mouth" centerx="102" centery="47" collisionshape="Box" collisionradius="102" collisionleft="0" collisionright="205" collisiontop="0" collisionbottom="95"/></sprites><frames count="261"><frame file="1" sprite="spr_biden_face"/><frame file="0" sprite="spr_biden_face"/><frame file="0" sprite="spr_font"/><frame file="1" sprite="spr_font"/><frame file="2" sprite="spr_font"/><frame file="3" sprite="spr_font"/><frame file="4" sprite="spr_font"/><frame file="5" sprite="spr_font"/><frame file="6" sprite="spr_font"/><frame file="7" sprite="spr_font"/><frame file="8" sprite="spr_font"/><frame file="9" sprite="spr_font"/><frame file="10" sprite="spr_font"/><frame file="11" sprite="spr_font"/><frame file="12" sprite="spr_font"/><frame file="13" sprite="spr_font"/><frame file="14" sprite="spr_font"/><frame file="15" sprite="spr_font"/><frame file="16" sprite="spr_font"/><frame file="17" sprite="spr_font"/><frame file="18" sprite="spr_font"/><frame file="19" sprite="spr_font"/><frame file="20" sprite="spr_font"/><frame file="21" sprite="spr_font"/><frame file="22" sprite="spr_font"/><frame file="23" sprite="spr_font"/><frame file="24" sprite="spr_font"/><frame file="25" sprite="spr_font"/><frame file="26" sprite="spr_font"/><frame file="27" sprite="spr_font"/><frame file="28" sprite="spr_font"/><frame file="29" sprite="spr_font"/><frame file="30" sprite="spr_font"/><frame file="31" sprite="spr_font"/><frame file="32" sprite="spr_font"/><frame file="33" sprite="spr_font"/><frame file="34" sprite="spr_font"/><frame file="35" sprite="spr_font"/><frame file="36" sprite="spr_font"/><frame file="37" sprite="spr_font"/><frame file="38" sprite="spr_font"/><frame file="39" sprite="spr_font"/><frame file="40" sprite="spr_font"/><frame file="41" sprite="spr_font"/><frame file="42" sprite="spr_font"/><frame file="43" sprite="spr_font"/><frame file="44" sprite="spr_font"/><frame file="45" sprite="spr_font"/><frame file="46" sprite="spr_font"/><frame file="47" sprite="spr_font"/><frame file="48" sprite="spr_font"/><frame file="49" sprite="spr_font"/><frame file="50" sprite="spr_font"/><frame file="51" sprite="spr_font"/><frame file="52" sprite="spr_font"/><frame file="53" sprite="spr_font"/><frame file="54" sprite="spr_font"/><frame file="55" sprite="spr_font"/><frame file="56" sprite="spr_font"/><frame file="57" sprite="spr_font"/><frame file="58" sprite="spr_font"/><frame file="59" sprite="spr_font"/><frame file="60" sprite="spr_font"/><frame file="61" sprite="spr_font"/><frame file="62" sprite="spr_font"/><frame file="63" sprite="spr_font"/><frame file="64" sprite="spr_font"/><frame file="65" sprite="spr_font"/><frame file="66" sprite="spr_font"/><frame file="67" sprite="spr_font"/><frame file="68" sprite="spr_font"/><frame file="69" sprite="spr_font"/><frame file="70" sprite="spr_font"/><frame file="71" sprite="spr_font"/><frame file="72" sprite="spr_font"/><frame file="73" sprite="spr_font"/><frame file="74" sprite="spr_font"/><frame file="75" sprite="spr_font"/><frame file="76" sprite="spr_font"/><frame file="77" sprite="spr_font"/><frame file="78" sprite="spr_font"/><frame file="79" sprite="spr_font"/><frame file="80" sprite="spr_font"/><frame file="81" sprite="spr_font"/><frame file="82" sprite="spr_font"/><frame file="83" sprite="spr_font"/><frame file="84" sprite="spr_font"/><frame file="85" sprite="spr_font"/><frame file="86" sprite="spr_font"/><frame file="87" sprite="spr_font"/><frame file="88" sprite="spr_font"/><frame file="89" sprite="spr_font"/><frame file="90" sprite="spr_font"/><frame file="91" sprite="spr_font"/><frame file="92" sprite="spr_font"/><frame file="93" sprite="spr_font"/><frame file="94" sprite="spr_font"/><frame file="95" sprite="spr_font"/><frame file="96" sprite="spr_font"/><frame file="97" sprite="spr_font"/><frame file="98" sprite="spr_font"/><frame file="99" sprite="spr_font"/><frame file="100" sprite="spr_font"/><frame file="101" sprite="spr_font"/><frame file="102" sprite="spr_font"/><frame file="103" sprite="spr_font"/><frame file="104" sprite="spr_font"/><frame file="105" sprite="spr_font"/><frame file="106" sprite="spr_font"/><frame file="107" sprite="spr_font"/><frame file="108" sprite="spr_font"/><frame file="109" sprite="spr_font"/><frame file="110" sprite="spr_font"/><frame file="111" sprite="spr_font"/><frame file="112" sprite="spr_font"/><frame file="113" sprite="spr_font"/><frame file="114" sprite="spr_font"/><frame file="115" sprite="spr_font"/><frame file="116" sprite="spr_font"/><frame file="117" sprite="spr_font"/><frame file="118" sprite="spr_font"/><frame file="119" sprite="spr_font"/><frame file="120" sprite="spr_font"/><frame file="121" sprite="spr_font"/><frame file="122" sprite="spr_font"/><frame file="123" sprite="spr_font"/><frame file="124" sprite="spr_font"/><frame file="125" sprite="spr_font"/><frame file="126" sprite="spr_font"/><frame file="127" sprite="spr_font"/><frame file="128" sprite="spr_font"/><frame file="129" sprite="spr_font"/><frame file="130" sprite="spr_font"/><frame file="131" sprite="spr_font"/><frame file="132" sprite="spr_font"/><frame file="133" sprite="spr_font"/><frame file="134" sprite="spr_font"/><frame file="135" sprite="spr_font"/><frame file="136" sprite="spr_font"/><frame file="137" sprite="spr_font"/><frame file="138" sprite="spr_font"/><frame file="139" sprite="spr_font"/><frame file="140" sprite="spr_font"/><frame file="141" sprite="spr_font"/><frame file="142" sprite="spr_font"/><frame file="143" sprite="spr_font"/><frame file="144" sprite="spr_font"/><frame file="145" sprite="spr_font"/><frame file="146" sprite="spr_font"/><frame file="147" sprite="spr_font"/><frame file="148" sprite="spr_font"/><frame file="149" sprite="spr_font"/><frame file="150" sprite="spr_font"/><frame file="151" sprite="spr_font"/><frame file="152" sprite="spr_font"/><frame file="153" sprite="spr_font"/><frame file="154" sprite="spr_font"/><frame file="155" sprite="spr_font"/><frame file="156" sprite="spr_font"/><frame file="157" sprite="spr_font"/><frame file="158" sprite="spr_font"/><frame file="159" sprite="spr_font"/><frame file="160" sprite="spr_font"/><frame file="161" sprite="spr_font"/><frame file="162" sprite="spr_font"/><frame file="163" sprite="spr_font"/><frame file="164" sprite="spr_font"/><frame file="165" sprite="spr_font"/><frame file="166" sprite="spr_font"/><frame file="167" sprite="spr_font"/><frame file="168" sprite="spr_font"/><frame file="169" sprite="spr_font"/><frame file="170" sprite="spr_font"/><frame file="171" sprite="spr_font"/><frame file="172" sprite="spr_font"/><frame file="173" sprite="spr_font"/><frame file="174" sprite="spr_font"/><frame file="175" sprite="spr_font"/><frame file="176" sprite="spr_font"/><frame file="177" sprite="spr_font"/><frame file="178" sprite="spr_font"/><frame file="179" sprite="spr_font"/><frame file="180" sprite="spr_font"/><frame file="181" sprite="spr_font"/><frame file="182" sprite="spr_font"/><frame file="183" sprite="spr_font"/><frame file="184" sprite="spr_font"/><frame file="185" sprite="spr_font"/><frame file="186" sprite="spr_font"/><frame file="187" sprite="spr_font"/><frame file="188" sprite="spr_font"/><frame file="189" sprite="spr_font"/><frame file="190" sprite="spr_font"/><frame file="191" sprite="spr_font"/><frame file="192" sprite="spr_font"/><frame file="193" sprite="spr_font"/><frame file="194" sprite="spr_font"/><frame file="195" sprite="spr_font"/><frame file="196" sprite="spr_font"/><frame file="197" sprite="spr_font"/><frame file="198" sprite="spr_font"/><frame file="199" sprite="spr_font"/><frame file="200" sprite="spr_font"/><frame file="201" sprite="spr_font"/><frame file="202" sprite="spr_font"/><frame file="203" sprite="spr_font"/><frame file="204" sprite="spr_font"/><frame file="205" sprite="spr_font"/><frame file="206" sprite="spr_font"/><frame file="207" sprite="spr_font"/><frame file="208" sprite="spr_font"/><frame file="209" sprite="spr_font"/><frame file="210" sprite="spr_font"/><frame file="211" sprite="spr_font"/><frame file="212" sprite="spr_font"/><frame file="213" sprite="spr_font"/><frame file="214" sprite="spr_font"/><frame file="215" sprite="spr_font"/><frame file="216" sprite="spr_font"/><frame file="217" sprite="spr_font"/><frame file="218" sprite="spr_font"/><frame file="219" sprite="spr_font"/><frame file="220" sprite="spr_font"/><frame file="221" sprite="spr_font"/><frame file="222" sprite="spr_font"/><frame file="223" sprite="spr_font"/><frame file="224" sprite="spr_font"/><frame file="225" sprite="spr_font"/><frame file="226" sprite="spr_font"/><frame file="227" sprite="spr_font"/><frame file="228" sprite="spr_font"/><frame file="229" sprite="spr_font"/><frame file="230" sprite="spr_font"/><frame file="231" sprite="spr_font"/><frame file="232" sprite="spr_font"/><frame file="233" sprite="spr_font"/><frame file="234" sprite="spr_font"/><frame file="235" sprite="spr_font"/><frame file="236" sprite="spr_font"/><frame file="237" sprite="spr_font"/><frame file="238" sprite="spr_font"/><frame file="239" sprite="spr_font"/><frame file="240" sprite="spr_font"/><frame file="241" sprite="spr_font"/><frame file="242" sprite="spr_font"/><frame file="243" sprite="spr_font"/><frame file="244" sprite="spr_font"/><frame file="245" sprite="spr_font"/><frame file="246" sprite="spr_font"/><frame file="247" sprite="spr_font"/><frame file="248" sprite="spr_font"/><frame file="249" sprite="spr_font"/><frame file="250" sprite="spr_font"/><frame file="251" sprite="spr_font"/><frame file="252" sprite="spr_font"/><frame file="253" sprite="spr_font"/><frame file="254" sprite="spr_font"/><frame file="255" sprite="spr_font"/><frame file="0" sprite="spr_usa_flag"/><frame file="0" sprite="spr_boss_face_mouth"/><frame file="0" sprite="spr_boss_face"/></frames><sounds count="2"><sound name="aud_dialogue" wav="" mp3="biden_voice.mp3" ogg=""/><sound name="aud_silence" wav="" mp3="silence.mp3" ogg=""/></sounds><musics count="0"/><backgrounds count="1"><background name="bg_usa_flag" file="usa_flag.png" tile="0" tileheight="32" tilewidth="32" tilexoffset="0" tileyoffset="0" tilexspace="0" tileyspace="0"/></backgrounds><fonts count="0"/><objects count="7"><object name="GOD" template="" prototype="1" scene="" sprite="" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="SceneObject17" template="GOD" prototype="0" scene="room_dialogue" sprite="" x="100" y="60" visible="0" depth="0" collision="0" parent="" direction="0" image_angle="0"/><object name="ROOM_MGR" template="" prototype="1" scene="" sprite="" x="0" y="0" visible="1" depth="0" collision="1" parent="" direction="0" image_angle="0"/><object name="SceneObject27" template="ROOM_MGR" prototype="0" scene="room_boot" sprite="" x="120" y="220" visible="0" depth="0" collision="0" parent="" direction="0" image_angle="0"/><object name="boss_face" template="" prototype="1" scene="" sprite="spr_boss_face" x="0" y="0" visible="1" depth="0" collision="0" parent="" direction="0" image_angle="0"/><object name="text_creator" template="" prototype="1" scene="" sprite="" x="0" y="0" visible="1" depth="0" collision="0" parent="" direction="0" image_angle="0"/><object name="GFX_MGR" template="" prototype="1" scene="" sprite="" x="0" y="0" visible="1" depth="-999" collision="1" parent="" direction="0" image_angle="0"/></objects><scripts count="27"><script name="scr_4" object="boss_face" event="Creation" parameter="">if (this.executeOnce) {
+	return;
+}
+
+// sound_loop(aud_dialogue);
+
+/*
+this.image_speed = 0;
+
+setTimeout(animateFace, 100 + Math.random()*500);
+function animateFace() {
+	image_index++;
+	setTimeout(animateFace, 50 + Math.random()*200);
+}
+*/
+
+this.x = room_width / 2;
+this.y = room_height / 2 - room_height / 8;
+this.image_xscale = this.image_yscale = global.scale * 2;
+
+this.mouth_y_start = this.mouth_y = this.y + 268 * global.scale;
+
+this.executeOnce = true;</script><script name="" object="" event="" parameter=""/><script name="scr_14" object="text_creator" event="Draw" parameter="">// Skip in case text is not populated yet
+if (typeof this.text == 'undefined' || this.text.length == 0) {
+	return;
+}
+
+// Text box background
+draw_rectangle_ext(
+	0, this.box_y,
+	room_width, room_height,
+	"#5b6a6d", 1, 0, false
+);
+
+// Text content
+draw_set_alpha(1);
+for (var i = 0; i&lt;this.text.length; i++) {
+	draw_sprite_ext(
+		this.font,
+		this.text[i].index,
+		this.text[i].x - (random(1) &lt; 0.01 ? 10*global.scale : 0),
+		this.text[i].y + this.offset_v,
+		this.scale,
+		this.scale,
+		0,
+		1,
+	);
+}
+
+// Text box outline
+draw_set_linewidth(3 * this.scale);
+var box_border = global.scale *10;
+draw_rectangle_ext(
+	box_border, this.box_y + box_border + this.offset_v,
+	room_width - box_border, room_height - box_border + this.offset_v,
+	global.c_white, 1, this.angle, true
+);
+// Text box overlap outline
+var box_overlap_border = global.scale * 12 + this.angle;
+draw_rectangle_ext(
+	box_border - box_overlap_border, this.box_y + box_border + this.offset_v - box_overlap_border,
+	room_width - box_border - box_overlap_border, room_height - box_border + this.offset_v - box_overlap_border,
+	global.c_white, 0.5, this.angle, true
+);
+</script><script name="scr_16" object="GOD" event="Creation" parameter="">// Calculate scale factors
+global.scale = window.innerHeight / room_height;
+console.log("global.scale", global.scale);
+var scale_factor = room_width / room_height;
+console.log("scale factor", scale_factor);
+
+// Stretch game canvas
+room_height = window.innerHeight;
+room_width = room_height * scale_factor;
+console.log("room", room_width, room_height);
+var canvas = document.getElementById("tululoocanvas");
+canvas.width = room_width;
+canvas.height = room_height;
+canvas.style.width = canvas.width;
+canvas.style.height = canvas.height;
+
+// Center game canvas
+canvas.style.position = "absolute";
+canvas.style.left = "50%";
+canvas.style.top = "50%";
+canvas.style.transform = "translate(-50%, -50%)";
+
+instance_create(0, 0, GFX_MGR);
+instance_create(0, 0, boss_face);
+var t = instance_create(0, 0, text_creator);
+console.log("created", t);
+t.lines = [
+	"Hello there,",
+	"Welcome\nTo\nThe\nGame",
+	"Let's see...",
+	"Javascript objects are containers for named values."
+];
+</script><script name="scr_19" object="text_creator" event="Creation" parameter="">// Workaround for creation code getting called multiple times
+if (this.execute_once) {
+	return;
+}
+
+this.scale = global.scale*1.3;
+
+// Text drawing setup
+this.text = [];
+this.line_index = -1;
+this.font = spr_font;
+this.ascii_offset = 0;
+this.sprite_offset = 0;
+
+// Text drawing helpers
+this.letter_width = this.font.width * this.scale;
+this.letter_height = this.font.height * this.scale;
+this.letter_x = this.box_x = this.letter_width / 2;
+this.letter_y = this.box_y = room_height - room_height / 3;
+
+// Text rotation
+this.angle = 0;
+this.angle_max = this.scale * 2;
+this.angle_rotation_step = this.scale / 10;
+this.angle_rotation_clock = true;
+
+// Text movement
+this.offset_v = 0;
+this.offset_v_max = this.scale * 12;
+this.offset_v_down = true;
+
+this.execute_once = true;</script><script name="" object="" event="" parameter=""/><script name="scr_20" object="boss_face" event="Step" parameter="">this.mouth_y += global.scale;
+if ((this.mouth_y - this.mouth_y_start) &gt;= global.scale * 7) {
+	this.mouth_y = this.mouth_y_start;
+}
+
+return;
+
+if (image_xscale &gt;= global.scale * 2) {
+	return;
+}
+image_xscale += global.scale / 500;
+image_yscale = image_xscale;</script><script name="scr_26" object="ROOM_MGR" event="Step" parameter="">//if (room_current == start &amp;&amp; mouse_check()) {
+//	room_goto(dialogue)
+//}
+
+if (mouse_check_released()) {
+	console.log(room_current);
+	var goto;
+	switch(room_current) {
+		case room_boot: goto = room_dialogue;
+			break;
+	}
+	room_goto(goto);
+}</script><script name="scr_28" object="ROOM_MGR" event="Creation" parameter="">//// Remove banner from index.html (sowwy UwU)
+var a = document.getElementsByTagName('a')[0];
+a.parentNode.removeChild(a);
+
+//// Enable audio
+window.addEventListener('touchstart', () =&gt; {
+	for (var i = 0; i &lt; tu_audios.length; i++) {
+		tu_audios[i].audio.muted = false;
+		tu_audios[i].audio.play();
+		tu_audios[i].audio.stop();
+	}
+})
+
+
+//// Go fullscreen to avoid browser detecting swipe gestures
+function goFullscreen() {
+    let element = document.documentElement;
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) { // Firefox
+        element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) { // Chrome, Safari
+        element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) { // Edge/IE
+        element.msRequestFullscreen();
+    }
+
+    // Remove this event listener after fullscreen is triggered
+    document.removeEventListener("touchstart", goFullscreen);
+}
+
+// Wait for the first touch, then go fullscreen
+document.addEventListener("touchstart", goFullscreen, { passive: false });
+
+//// Fix the deprecation warning by adding the new mobile-web-app-capable meta tag
+// Create and append the new mobile-web-app-capable meta tag
+let mobileMetaTag = document.createElement('meta');
+mobileMetaTag.name = "mobile-web-app-capable";
+mobileMetaTag.content = "yes";
+document.head.appendChild(mobileMetaTag);
+
+//// Disable two-fingers gestures (e.g. zooming)
+let isTwoFingerTouching = false;
+let isTwoFingerScrolling = false;
+// Detect two-finger touch on touch-enabled devices
+document.addEventListener('touchstart', function(event) {
+    if (event.touches.length === 2) {
+        isTwoFingerTouching = true;
+        console.log("Two fingers detected.");
+    }
+}, { passive: true });
+document.addEventListener('touchend', function() {
+    isTwoFingerTouching = false;  // Reset when fingers are lifted
+}, { passive: true });
+document.addEventListener('touchmove', function(event) {
+    if (isTwoFingerTouching) {
+        event.preventDefault();  // Block movement or zoom on touch screens
+    }
+}, { passive: false });
+// Detect two-finger scroll on trackpad
+window.addEventListener('wheel', function(event) {
+    if (event.ctrlKey || event.deltaY !== 0) {
+        isTwoFingerScrolling = true;
+    }
+}, { passive: false });
+window.addEventListener('wheel', function(event) {
+    if (isTwoFingerScrolling) {
+        event.preventDefault();  // Block scrolling or zooming on trackpads
+    }
+}, { passive: false });
+
+//// Lock screen orientation
+async function lockOrientation() {
+    if (screen.orientation &amp;&amp; screen.orientation.lock) {
+        try {
+            await screen.orientation.lock("landscape"); // or "portrait"
+            console.log("Orientation locked!");
+        } catch (e) {
+            console.error("Orientation lock failed:", e);
+        }
+    }
+}
+
+// Call after entering fullscreen
+document.documentElement.requestFullscreen().then(lockOrientation);
+</script><script name="scr_30" object="text_creator" event="Step" parameter="">// Skip if text is not defined yet
+if (typeof this.lines == 'undefined' || this.lines.length == 0) {
+	return;
+}
+
+// Text box rotation animation
+if (this.angle_rotation_clock) {
+	this.angle += this.angle_rotation_step;
+	if (this.angle &gt;= this.angle_max) {
+		this.angle_rotation_clock = false;
+	}
+} else {
+	this.angle -= this.angle_rotation_step;
+	if (this.angle &lt;= -this.angle_max) {
+		this.angle_rotation_clock = true;
+	}
+}
+
+// Text box movement animation
+var offset_v_step = (this.offset_v_max - abs(this.offset_v)) * 0.1
+if (this.offset_v_down) {
+	this.offset_v += offset_v_step;
+	if (this.offset_v &gt;= this.offset_v_max * 0.9) {
+		this.offset_v_down = false;
+	}
+} else {
+	this.offset_v -= offset_v_step;
+	if (this.offset_v &lt;= -this.offset_v_max * 0.9) {
+		this.offset_v_down = true;
+	}
+}
+
+/*
+Text is updated when mouse is released, so text is empty until we tap for the first time.
+We cannot use this code at creation since this.lines is set after that.
+Maybe put this code in End step and execute it only once?
+In general I should create a framework to execute stuff only once
+at specific times...
+*/
+if (mouse_check_released()) {
+	if (this.line_index == this.lines.length - 1) {
+		// end of input text reached
+		return;
+	}
+	this.line_index++;
+	this.text = [];
+	this.letter_x = this.box_x;
+	this.letter_y = this.box_y + this.letter_height / 2;
+	
+	var line = format_line(this.lines[this.line_index]);
+	console.log("line", line);
+	for (var i = 0; i &lt; line.length; i++) {
+		// convert each letter in a map (index, x, y) to be used when drawing text
+		if (line[i] == '\n') {
+			continue;
+		}
+		this.text.push({
+			index: line[i].charCodeAt(0) - this.ascii_offset + this.sprite_offset,
+			x: this.letter_x,
+			y: this.letter_y - this.scale * 5 + random(this.scale * 10),
+		})
+		this.letter_x += this.letter_width;
+		if (line[i + 1] == '\n' || this.letter_x &gt;= room_width - this.box_x*2) {
+			// if maximum line width was reached, make sure to draw text in next line
+			this.letter_x = this.box_x;
+			this.letter_y += this.letter_height;
+		}
+	}
+}
+
+function format_line(line) {
+	var max_length = (room_width - letter_width) / letter_width;
+	console.log("max_length", max_length);
+	var words = line.split(" ");
+	var current_length = 0;
+	var formatted_line = "";
+
+	for (var i = 0; i &lt; words.length; i++) {
+		word = words[i];
+		if (current_length + word.length + 1 &gt; max_length) {
+			// TODO: Split word (with "-" separator) vs. putting it in the next line
+			// Currently we cannot display words &gt;10 chars
+			formatted_line += '\n';
+			current_length = 0;
+		}
+		if (current_length &gt; 0) {
+			formatted_line += " ";
+			current_length++;
+		}
+		formatted_line += word;
+		current_length += word.length; // should it be += formatted_line.length?
+		console.log("format", current_length);
+	}
+	return formatted_line;
+}</script><script name="" object="" event="" parameter=""/><script name="" object="" event="" parameter=""/><script name="scr_39" object="boss_face" event="Draw" parameter="">draw_sprite_ext(spr_boss_face, 0, x, y, image_xscale, image_yscale, 0, 1);
+
+draw_sprite_ext(spr_boss_face_mouth, 0, x + 12, this.mouth_y, image_xscale, image_yscale, 0, 1);</script><script name="scr_45" object="GFX_MGR" event="Draw" parameter="">draw_noise();
+draw_scanlines();
+draw_vcr();
+if (this.glitch_draw_random &gt; 0.1  &amp;&amp; this.glitch_draw_random &lt; 0.5) {
+	slice_screen();
+}
+
+
+
+</script><script name="" object="" event="" parameter=""/><script name="scr_46" object="GFX_MGR" event="Step" parameter="">if (Math.floor(tu_frame_step) == 0) {
+	glitch_draw_random = random(1); // TODO base it on stress level
+}
+
+if (Math.random() &lt; 0.1) { // screen glitch movement
+	//room_viewport_x += (Math.random() - 0.5) * 5;
+	//room_viewport_y += (Math.random() - 0.5) * 5;
+}
+
+if (Math.random() &lt; 0.01) { // screen reset
+	room_viewport_x = _room_viewport_x;
+	room_viewport_y = _room_viewport_y;
+}</script><script name="scr_47" object="GFX_MGR" event="Creation" parameter="">global.GFX_MGR = this;
+
+draw_rectangle = glitch_draw(draw_rectangle);
+draw_rectangle_ext = glitch_draw(draw_rectangle_ext);
+draw_sprite = glitch_draw(draw_sprite);
+draw_sprite_ext = glitch_draw(draw_sprite_ext);
+this.glitch_draw_random = 0;
+this.scanline_offset = 0;
+
+_room_viewport_x = room_viewport_x;
+_room_viewport_y = room_viewport_y;
+
+// TODO remove vvv
+let overlay_canvas = document.createElement("canvas");
+overlay_canvas.width = room_viewport_width; // window.innerWidth;
+overlay_canvas.height = room_viewport_height; // window.innerHeight;
+overlay_canvas.style.position = "absolute";
+overlay_canvas.style.top = room_viewport_y; // "0";
+overlay_canvas.style.left = room_viewport_x; // "0";
+overlay_canvas.style.pointerEvents = "none"; // Prevent interference with game inputs
+document.body.appendChild(overlay_canvas);
+
+this.overlay_canvas = overlay_canvas;
+this.overlay_ctx = this.overlay_canvas.getContext("2d");
+</script><script name="" object="" event="" parameter=""/><script name="scr_48" object="GOD" event="Creation" parameter="">global.c_black  = "#000000";
+global.c_white  = "#FFFFFF";
+global.c_red    = "#FF0000";
+global.c_green  = "#00FF00";
+global.c_blue   = "#0000FF";
+global.c_yellow = "#FFFF00";
+global.c_purple = "#800080";
+global.c_cyan   = "#00FFFF";
+global.c_gray   = "#808080";
+global.c_orange = "#FFA500";
+global.c_pink   = "#FFC0CB";
+</script><script name="" object="" event="" parameter=""/><script name="scr_50" object="GFX_MGR" event="Step" parameter="">function drawVHSOverlay() {
+    //overlayCtx.clearRect(overlayCanvas.style.left, overlayCanvas.style.top, overlayCanvas.width, overlayCanvas.height);
+    overlayCtx.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height);
+
+    // Draw scanlines
+    for (let y = 0; y &lt; overlayCanvas.height; y += 6) { 
+        //overlayCtx.fillStyle = "rgba(0, 0, 0, 0.1)";
+        //overlayCtx.fillRect(0, y, overlayCanvas.width, 2);
+    }
+
+    // Apply RGB bleeding effect
+	/*
+    let offset = (Math.random() - 0.5) * 5; // Random horizontal shift
+    overlayCtx.globalCompositeOperation = "screen";
+    
+    overlayCtx.translate(-1 + offset, 0);
+    overlayCtx.fillStyle = "red";
+    overlayCtx.fillRect(0, 0, overlayCanvas.width, overlayCanvas.height);
+
+    overlayCtx.translate(2, 0);
+    overlayCtx.fillStyle = "blue";
+    overlayCtx.fillRect(0, 0, overlayCanvas.width, overlayCanvas.height);
+
+    overlayCtx.globalCompositeOperation = "source-over"; // Reset blending
+*/
+
+    // Apply slight blur
+    //overlayCtx.filter = "blur(1.5px)";
+	blurCtx.filter = "blur(1.5px)";
+	blurCtx.clearRect(0, 0, blurCanvas.width, blurCanvas.height);
+	blurCtx.drawImage(overlayCanvas, 0, 0);
+
+	// Draw the pre-blurred overlay back onto the main canvas
+	overlayCtx.drawImage(blurCanvas, 0, 0);
+
+    // Call again after a delay
+    setTimeout(drawVHSOverlay, 1000 / 30);
+	//requestAnimationFrame(drawVHSOverlay);
+}
+
+// drawVHSOverlay();
+</script><script name="scr_51" object="GFX_MGR" event="Creation" parameter="">let noiseCanvas = document.createElement("canvas");
+noiseCanvas.width = overlay_canvas.width;
+noiseCanvas.height = overlay_canvas.height;
+let noiseCtx = noiseCanvas.getContext("2d");
+
+// Generate static noise once
+for (let i = 0; i &lt; 5000; i++) {
+    let x = Math.random() * noiseCanvas.width;
+    let y = Math.random() * noiseCanvas.height;
+    noiseCtx.fillStyle = `rgba(255,255,255,${Math.random() * 0.1})`;
+    noiseCtx.fillRect(x, y, 1, 1);
+}
+
+this.noiseCanvas = noiseCanvas;</script><script name="scr_52" object="GFX_MGR" event="Creation" parameter="">let blurCanvas = document.createElement("canvas");
+blurCanvas.width = overlay_canvas.width;
+blurCanvas.height = overlay_canvas.height;
+this.blurCanvas = blurCanvas;
+this.blurCtx = this.blurCanvas.getContext("2d");</script><script name="scr_54" object="GFX_MGR" event="Creation" parameter="">let canvas = document.createElement("canvas");
+canvas.width = tu_canvas.width;
+canvas.height = tu_canvas.height;
+let ctx_red_screen = canvas.getContext("2d");
+ctx_red_screen.fillStyle = "rgba(255, 0, 0, 0.3)"; // Red tint
+ctx_red_screen.fillRect(0, 0, room_width, room_height);
+this.red_screen = canvas;
+</script><script name="scr_56" object="GFX_MGR" event="Creation" parameter="">this.vcr_canvas = document.createElement("canvas");
+this.vcr_canvas.width = tu_canvas.width;
+this.vcr_canvas.height = tu_canvas.height;
+this.vcr_ctx = this.vcr_canvas.getContext("2d");
+this.vcr_timer = 0;
+</script><script name="" object="" event="" parameter=""/><script name="" object="" event="" parameter=""/></scripts><scenes count="2"><scene name="room_boot" width="640" height="480" speed="30" red="0" green="0" blue="0" background="" backgroundstretch="0" backgroundtilex="0" backgroundtiley="0" viewportwidth="640" viewportheight="480" viewportxborder="50" viewportyborder="50" viewportobject=""/><scene name="room_dialogue" width="960" height="1704" speed="30" red="0" green="83" blue="146" background="bg_usa_flag" backgroundstretch="1" backgroundtilex="1" backgroundtiley="0" viewportwidth="960" viewportheight="1704" viewportxborder="0" viewportyborder="0" viewportobject="">/*
+var scale_factor = room_width / room_height;
+console.log("scale factor", scale_factor);
+global.scale_h = window.innerHeight / room_height;
+global.scale_w = scale_factor;
+console.log("global.scale", global.scale_w, global.scale_h);
+room_height = window.innerHeight;
+room_width = room_height * scale_factor;
+console.log("room", room_width, room_height);
+var canvas = document.getElementById("tululoocanvas");
+canvas.width = room_width;
+canvas.height = room_height;
+console.log("canvas", canvas.height, canvas.width);
+*/</scene></scenes><layers count="2"><layer name="layer_6" scene="room_dialogue" value="1000000"/><layer name="layer_23" scene="room_boot" value="1000000"/></layers><tiles count="0"/><fns count="10"><fn name="draw_rectangle_ext" params="x1, y1, x2, y2, color, alpha, angle, outline" description="">let ctx = tu_canvas.getContext("2d");
+
+let width = x2 - x1;
+let height = y2 - y1;
+let centerX = x1 + width / 2;
+let centerY = y1 + height / 2;
+
+ctx.globalAlpha = alpha;
+ctx.fillStyle = color;
+ctx.strokeStyle = color;
+
+ctx.save();
+ctx.translate(centerX, centerY);
+ctx.rotate(angle * Math.PI / 180);
+
+if (outline) {
+	ctx.strokeRect(-width / 2, -height / 2, width, height);
+} else {
+	ctx.fillRect(-width / 2, -height / 2, width, height);
+}
+
+ctx.restore();
+ctx.globalAlpha = 1.0;</fn><fn name="glitch_draw" params="fn" description="">return function(...args) {
+	if (global.GFX_MGR == undefined) {
+		return;
+	}
+	let rnd = global.GFX_MGR.glitch_draw_random;
+	
+	let ctx = tu_canvas.getContext("2d");
+	ctx.save();
+
+	if (rnd &gt; 0.5 &amp;&amp; rnd &lt; 0.51) {
+		console.log("glitch_draw - glitch");
+	    ctx.translate(200*global.scale, 0);
+		//ctx.scale(1.1, 1.1);
+		ctx.globalAlpha = 0.3;
+		ctx.filter = "saturate(0) brightness(250%) "; 
+		// Draw shadow
+		fn(...args);
+		
+		// Reset
+		ctx.restore();
+		ctx.save();  
+		ctx.filter = "none";  
+		ctx.globalAlpha = 1.0;  
+	} else {
+		// Draw original
+		fn(...args);
+	}
+
+	if (rnd &lt; 0.01) {
+		console.log("glitch_draw - screen");
+		ctx.globalCompositeOperation = "screen";
+		ctx.translate(-40*global.scale, 0); 
+		ctx.globalAlpha = 0.5; 
+		// Draw effected
+		fn(...args);
+	}
+	if (rnd &gt; 0.99) {
+		console.log("glitch_draw - lighter");
+		ctx.globalCompositeOperation = "lighter";
+		ctx.translate(15*global.scale, 0);
+		// Draw effected
+		fn(...args);
+	}
+
+	ctx.restore();
+	// Reset drawing settings
+	ctx.globalCompositeOperation = "source-over";
+    ctx.globalAlpha = 1.0;
+};
+</fn><fn name="draw_noise" params="" description="">for (let i = 0; i &lt; 3000; i++) {
+	let ctx = tu_canvas.getContext("2d");
+	//ctx.save();
+
+	let x = Math.random() * room_width;
+	let y = Math.random() * room_height;
+	ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.05})`;
+	ctx.fillRect(x, y, 1, 1);
+	
+	//ctx.restore();
+}
+</fn><fn name="draw_scanlines" params="" description="">if (!global.GFX_MGR) {
+	return;
+}
+
+let scanline_step = 8;
+let scanline_offset_step = global.scale;
+let ctx = tu_canvas.getContext("2d");
+
+// Update scanline offset ONCE per frame
+global.GFX_MGR.scanline_offset =
+	(global.GFX_MGR.scanline_offset + scanline_offset_step) % (global.scale * scanline_step * 2);
+
+for (let y = global.GFX_MGR.scanline_offset; y &lt; room_height; y += global.scale * scanline_step * 2) {
+	//ctx.globalCompositeOperation = "color-burn";
+	ctx.globalCompositeOperation = "overlay";
+	ctx.globalAlpha = 0.2 + 0.8 * (room_height - y) / room_height;
+	ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+	ctx.fillRect(0, y, room_width, global.scale * scanline_step);
+}
+
+// reset
+ctx.globalCompositeOperation = "source-over";
+ctx.globalAlpha = 1.0;</fn><fn name="glitch_canvas" params="fn" description="">return function() {
+	fn(); // Call original tu_draw function
+
+	let ctx = tu_canvas.getContext("2d");
+	let imageData = ctx.getImageData(0, 0, tu_canvas.width, tu_canvas.height);
+	let pixels = imageData.data;
+
+	// Apply horizontal glitch shifts &amp; RGB distortion
+	for (let y = 0; y &lt; tu_canvas.height; y += 5) {
+		let offset = (Math.random() - 0.5) * 10; // Random horizontal shift
+		ctx.putImageData(imageData, offset, y);
+	}
+
+	ctx.globalCompositeOperation = "lighter"; // Blend colors
+	ctx.filter = "blur(1px)";
+	ctx.putImageData(imageData, 0, 0);
+	ctx.globalCompositeOperation = "source-over";
+};
+</fn><fn name="glitch_draw_v2" params="fn" description="">return function (...args) {
+    if (global.GFX_MGR == undefined) {
+        return;
+    }
+
+    let rnd = global.GFX_MGR.glitch_draw_random;
+    let ctx = tu_canvas.getContext("2d");
+    ctx.save();
+
+    // í ½í´¹ 1. Random Flicker Effect (Simulates VHS frame instability)
+    if (Math.random() &lt; 0.05) {
+        ctx.globalAlpha = Math.random() &gt; 0.7 ? 0.2 : 1.0;
+    }
+
+    // í ½í´¹ 2. Shadow Ghosting Effect
+    if (rnd &gt; 0.5 &amp;&amp; rnd &lt; 0.55) {
+        console.log("glitch_draw - shadow");
+        ctx.scale(1.1, 1.1);
+        ctx.globalAlpha = 0.3;
+        ctx.filter = "brightness(50%) blur(3px)";
+        fn(...args);
+    }
+
+    // í ½í´¹ 3. Draw Base Sprite
+    ctx.globalAlpha = 1.0;
+    fn(...args);
+
+    // í ½í´¹ 4. RGB Channel Separation
+    if (rnd &lt; 0.05) {
+        console.log("glitch_draw - red shift");
+        ctx.globalCompositeOperation = "screen";
+        ctx.translate(-2 * global.scale, 0); // Slight red channel shift
+        ctx.filter = "brightness(1.2)";
+        fn(...args);
+    }
+    if (rnd &gt; 0.95) {
+        console.log("glitch_draw - blue shift");
+        ctx.globalCompositeOperation = "lighter";
+        ctx.translate(2 * global.scale, 0); // Opposite shift for blue
+        fn(...args);
+    }
+
+    // í ½í´¹ 5. Scanline Wobble Effect
+    if (rnd &gt; 0.7) {
+        ctx.translate(0, Math.sin(Date.now() * 0.01) * 3); // Small Y wobble
+    }
+
+    ctx.restore();
+
+    // Reset blending mode &amp; transparency
+    ctx.globalCompositeOperation = "source-over";
+    ctx.globalAlpha = 1.0;
+};
+</fn><fn name="glitch_draw_v3" params="fn" description="">return function(...args) {
+    let ctx = tu_canvas.getContext("2d");
+
+    // Get sprite position and size
+    let x = args[1], y = args[2], width = args[3] || 64, height = args[4] || 64;
+
+    // Create an offscreen canvas matching the sprite size
+    let buffer_canvas = document.createElement("canvas");
+    buffer_canvas.width = room_width;
+    buffer_canvas.height = room_height;
+    let buffer_ctx = buffer_canvas.getContext("2d");
+
+    buffer_ctx.clearRect(0, 0, room_width, room_height);
+    
+    // Step 1: Draw the sprite onto the buffer
+    buffer_ctx.save();
+    fn.apply(buffer_ctx, args);
+    buffer_ctx.restore();
+
+    // Step 2: Apply the red tint only inside the sprite area
+    buffer_ctx.globalCompositeOperation = "source-atop";
+    buffer_ctx.fillStyle = "red";
+    buffer_ctx.fillRect(0, 0, width, height);
+    buffer_ctx.globalCompositeOperation = "source-over";
+
+    // Step 3: Draw the tinted sprite back onto the main canvas
+    ctx.drawImage(buffer_canvas, x, y);
+};
+</fn><fn name="draw_vcr" params="" description="">if (global.GFX_MGR === undefined) {
+	return;
+}
+
+const canvas = global.GFX_MGR.vcr_canvas;
+const ctx = global.GFX_MGR.vcr_ctx;
+let posy1 = 0;
+let posy2 = canvas.height;
+let posy3 = 0;
+const num = 20;
+radius = 2;
+xmax = canvas.width;
+ymax = canvas.height;		
+
+//canvas.style.filter = `blur(2px)`;
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+ctx.fillStyle = `#fff`;
+
+ctx.beginPath();
+for (var i = 0; i &lt;= num; i++) {
+	var x = Math.random(i) * xmax;
+	var y1 = (posy1+=3) + random(posy2);
+	var y2 = random(posy3-=3);
+	ctx.fillRect(x, y1, radius, radius);
+	ctx.fillRect(x, y2, radius, radius);
+	ctx.fill();
+
+	this.render_tail(ctx, x, y1, radius);
+	this.render_tail(ctx, x, y2, radius);
+}
+ctx.closePath();
+
+let tu_ctx = tu_canvas.getContext("2d");
+tu_ctx.globalCompositeOperation = "screen"; 
+tu_ctx.filter = "blur(2px)";
+tu_ctx.drawImage(canvas, 0, 0);
+tu_ctx.globalCompositeOperation = "source-over";</fn><fn name="render_tail" params="ctx, x, y, radius" description="">const n = 1 + random(50);
+
+const dirs = [1, -1];
+let rd = radius;
+const dir = dirs[Math.floor(Math.random() * dirs.length)];
+for (let i = 0; i &lt; n; i++) {
+	const step = 0.01;
+	let r = (rd -= step) + random(radius);
+	let dx = 1 + random(4);
+
+	radius -= 0.1;
+
+	dx *= dir;
+
+	ctx.fillRect((x += dx), y, r, r);
+	ctx.fill();
+}</fn><fn name="slice_screen" params="" description="">if (global.GFX_MGR === undefined) {
+	return;
+}
+
+const canvas = global.GFX_MGR.vcr_canvas;
+const ctx = global.GFX_MGR.vcr_ctx;
+if (Math.floor(tu_frame_step) == 0) {
+    let width = canvas.width;
+    let height = canvas.height;
+    let slice_height = height/24; // Make slices bigger for visibility
+
+    ctx.clearRect(0, 0, width, height);
+
+    // í ½í¿¢ First, draw the full tu_canvas onto vcr_canvas
+    ctx.drawImage(tu_canvas, 0, 0);  
+
+    // í ½í¿¥ Apply horizontal slice shifting (VCR distortion)
+    for (let y = 0; y &lt; height; y += slice_height) {
+        let shift = (Math.random() - 0.5) * 20; // Stronger shift effect
+        ctx.drawImage(canvas, 0, y, width, slice_height, shift, y, width, slice_height);
+    }
+}
+
+let tu_ctx = tu_canvas.getContext("2d");
+tu_ctx.globalCompositeOperation = "screen"; 
+tu_ctx.drawImage(canvas, 0, 0);
+tu_ctx.globalCompositeOperation = "source-over";</fn></fns></tululoo>

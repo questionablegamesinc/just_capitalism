@@ -1,1 +1,6 @@
+*
+!.gitignore
+!just_capitalism/
+!just_capitalism/**
+!just_capitalism.xml
 .DS_Store
