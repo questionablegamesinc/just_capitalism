@@ -1372,6 +1372,14 @@ function __spr_usa_flag() {
 __sprite_init__(this, spr_usa_flag, 500, 750, 0, 0, 'Box', 250, 0, 500, 0, 750, ['img/spr_usa_flag_0.png']);
 }; var spr_usa_flag = new __spr_usa_flag();
 
+function __spr_boss_face() { 
+__sprite_init__(this, spr_boss_face, 675, 578, 337, 289, 'Box', 337, 0, 675, 0, 578, ['img/spr_boss_face_0.png']);
+}; var spr_boss_face = new __spr_boss_face();
+
+function __spr_boss_face_mouth() { 
+__sprite_init__(this, spr_boss_face_mouth, 205, 95, 102, 47, 'Box', 102, 0, 205, 0, 95, ['img/spr_boss_face_mouth_0.png']);
+}; var spr_boss_face_mouth = new __spr_boss_face_mouth();
+
 
 
 /***********************************************************************
@@ -1412,10 +1420,13 @@ function __GOD() {
 __instance_init__(this, GOD, null, 1, 0, null, 1, 0);
 this.on_creation = function() {
 with(this) {
-console.log("scale factor", scale_factor);
+// Calculate scale factors
 global.scale = window.innerHeight / room_height;
 console.log("global.scale", global.scale);
 var scale_factor = room_width / room_height;
+console.log("scale factor", scale_factor);
+
+// Stretch game canvas
 room_height = window.innerHeight;
 room_width = room_height * scale_factor;
 console.log("room", room_width, room_height);
@@ -1425,7 +1436,14 @@ canvas.height = room_height;
 canvas.style.width = canvas.width;
 canvas.style.height = canvas.height;
 
-instance_create(0, 0, biden_face);
+// Center game canvas
+canvas.style.position = "absolute";
+canvas.style.left = "50%";
+canvas.style.top = "50%";
+canvas.style.transform = "translate(-50%, -50%)";
+
+instance_create(0, 0, GFX_MGR);
+instance_create(0, 0, boss_face);
 var t = instance_create(0, 0, text_creator);
 console.log("created", t);
 t.lines = [
@@ -1435,14 +1453,22 @@ t.lines = [
 	"Javascript objects are containers for named values."
 ];
 
-}
-};
-this.on_destroy = on_destroy_i;
-this.on_step = function() {
-with(this) {
+global.c_black  = "#000000";
+global.c_white  = "#FFFFFF";
+global.c_red    = "#FF0000";
+global.c_green  = "#00FF00";
+global.c_blue   = "#0000FF";
+global.c_yellow = "#FFFF00";
+global.c_purple = "#800080";
+global.c_cyan   = "#00FFFF";
+global.c_gray   = "#808080";
+global.c_orange = "#FFA500";
+global.c_pink   = "#FFC0CB";
 
 }
 };
+this.on_destroy = on_destroy_i;
+this.on_step = on_step_i;
 this.on_end_step = on_end_step_i;
 this.on_collision = on_collision_i;
 this.on_roomstart = on_roomstart_i;
@@ -1467,6 +1493,7 @@ window.addEventListener('touchstart', () => {
 		tu_audios[i].audio.stop();
 	}
 })
+
 
 //// Go fullscreen to avoid browser detecting swipe gestures
 function goFullscreen() {
@@ -1511,22 +1538,34 @@ document.addEventListener('touchend', function() {
 document.addEventListener('touchmove', function(event) {
     if (isTwoFingerTouching) {
         event.preventDefault();  // Block movement or zoom on touch screens
-        console.log("Movement blocked due to two-finger touch.");
     }
 }, { passive: false });
 // Detect two-finger scroll on trackpad
 window.addEventListener('wheel', function(event) {
     if (event.ctrlKey || event.deltaY !== 0) {
         isTwoFingerScrolling = true;
-        console.log("Two-finger scroll detected.");
     }
 }, { passive: false });
 window.addEventListener('wheel', function(event) {
     if (isTwoFingerScrolling) {
         event.preventDefault();  // Block scrolling or zooming on trackpads
-        console.log("Movement blocked due to two-finger scroll.");
     }
 }, { passive: false });
+
+//// Lock screen orientation
+async function lockOrientation() {
+    if (screen.orientation && screen.orientation.lock) {
+        try {
+            await screen.orientation.lock("landscape"); // or "portrait"
+            console.log("Orientation locked!");
+        } catch (e) {
+            console.error("Orientation lock failed:", e);
+        }
+    }
+}
+
+// Call after entering fullscreen
+document.documentElement.requestFullscreen().then(lockOrientation);
 
 }
 };
@@ -1556,14 +1595,17 @@ this.on_animationend = on_animationend_i;
 this.on_draw = on_draw_i;
 }; var ROOM_MGR = new __ROOM_MGR();
 
-function __biden_face() {
-__instance_init__(this, biden_face, null, 1, 0, spr_biden_face, 0, 4);
+function __boss_face() {
+__instance_init__(this, boss_face, null, 1, 0, spr_boss_face, 0, 4);
 this.on_creation = function() {
 with(this) {
 if (this.executeOnce) {
 	return;
 }
 
+// sound_loop(aud_dialogue);
+
+/*
 this.image_speed = 0;
 
 setTimeout(animateFace, 100 + Math.random()*500);
@@ -1571,13 +1613,13 @@ function animateFace() {
 	image_index++;
 	setTimeout(animateFace, 50 + Math.random()*200);
 }
+*/
 
-this.x = room_width/2;
-this.y = room_height/2 - room_height/8;
-this.image_xscale = this.image_yscale = global.scale;
+this.x = room_width / 2;
+this.y = room_height / 2 - room_height / 8;
+this.image_xscale = this.image_yscale = global.scale * 2;
 
-//aud_dialogue.audio.muted = false;
-sound_loop(aud_dialogue);
+this.mouth_y_start = this.mouth_y = this.y + 268 * global.scale;
 
 this.executeOnce = true;
 }
@@ -1585,10 +1627,17 @@ this.executeOnce = true;
 this.on_destroy = on_destroy_i;
 this.on_step = function() {
 with(this) {
-if (image_xscale >= global.scale*2) {
+this.mouth_y += global.scale;
+if ((this.mouth_y - this.mouth_y_start) >= global.scale * 7) {
+	this.mouth_y = this.mouth_y_start;
+}
+
+return;
+
+if (image_xscale >= global.scale * 2) {
 	return;
 }
-image_xscale += global.scale/500;
+image_xscale += global.scale / 500;
 image_yscale = image_xscale;
 }
 };
@@ -1597,100 +1646,153 @@ this.on_collision = on_collision_i;
 this.on_roomstart = on_roomstart_i;
 this.on_roomend = on_roomend_i;
 this.on_animationend = on_animationend_i;
-this.on_draw = on_draw_i;
-}; var biden_face = new __biden_face();
+this.on_draw = function() {
+if (this.visible == 1) {
+__handle_sprite__(this);
+with(this) {
+draw_sprite_ext(spr_boss_face, 0, x, y, image_xscale, image_yscale, 0, 1);
+
+draw_sprite_ext(spr_boss_face_mouth, 0, x + 12, this.mouth_y, image_xscale, image_yscale, 0, 1);
+}
+}
+};
+}; var boss_face = new __boss_face();
 
 function __text_creator() {
 __instance_init__(this, text_creator, null, 1, 0, null, 0, 5);
 this.on_creation = function() {
 with(this) {
-if (this.executeOnce) {
+// Workaround for creation code getting called multiple times
+if (this.execute_once) {
 	return;
 }
 
 this.scale = global.scale*1.3;
 
-this.font = spr_font;
-this.index = -1;
-//this.asciiOffset = 'a'.charCodeAt(0);
-//this.spriteOffset = 65;
-this.asciiOffset = 0;
-this.spriteOffset = 0;
+// Text drawing setup
 this.text = [];
-this.sizeH = this.font.width *this.scale;
-this.sizeV = this.font.height *this.scale;
-this.xx = this._xx = this.sizeH /2;
-this.yy = this._yy = room_height - room_height/3;
+this.line_index = -1;
+this.font = spr_font;
+this.ascii_offset = 0;
+this.sprite_offset = 0;
 
-this.step = 0;
+// Text drawing helpers
+this.letter_width = this.font.width * this.scale;
+this.letter_height = this.font.height * this.scale;
+this.letter_x = this.box_x = this.letter_width / 2;
+this.letter_y = this.box_y = room_height - room_height / 3;
 
-this.executeOnce = true;
+// Text rotation
+this.angle = 0;
+this.angle_max = this.scale * 2;
+this.angle_rotation_step = this.scale / 10;
+this.angle_rotation_clock = true;
+
+// Text movement
+this.offset_v = 0;
+this.offset_v_max = this.scale * 12;
+this.offset_v_down = true;
+
+this.execute_once = true;
 }
 };
 this.on_destroy = on_destroy_i;
 this.on_step = function() {
 with(this) {
+// Skip if text is not defined yet
 if (typeof this.lines == 'undefined' || this.lines.length == 0) {
 	return;
 }
 
+// Text box rotation animation
+if (this.angle_rotation_clock) {
+	this.angle += this.angle_rotation_step;
+	if (this.angle >= this.angle_max) {
+		this.angle_rotation_clock = false;
+	}
+} else {
+	this.angle -= this.angle_rotation_step;
+	if (this.angle <= -this.angle_max) {
+		this.angle_rotation_clock = true;
+	}
+}
+
+// Text box movement animation
+var offset_v_step = (this.offset_v_max - abs(this.offset_v)) * 0.1
+if (this.offset_v_down) {
+	this.offset_v += offset_v_step;
+	if (this.offset_v >= this.offset_v_max * 0.9) {
+		this.offset_v_down = false;
+	}
+} else {
+	this.offset_v -= offset_v_step;
+	if (this.offset_v <= -this.offset_v_max * 0.9) {
+		this.offset_v_down = true;
+	}
+}
+
 /*
-Text is updated when mouse is released, so text is empty until we tap for he first time.
+Text is updated when mouse is released, so text is empty until we tap for the first time.
 We cannot use this code at creation since this.lines is set after that.
 Maybe put this code in End step and execute it only once?
 In general I should create a framework to execute stuff only once
 at specific times...
 */
 if (mouse_check_released()) {
-	if (this.index == this.lines.length-1) {
+	if (this.line_index == this.lines.length - 1) {
+		// end of input text reached
 		return;
 	}
-	this.index++;
+	this.line_index++;
 	this.text = [];
-	this.xx = this._xx;
-	this.yy = this._yy + this.sizeV/2;
+	this.letter_x = this.box_x;
+	this.letter_y = this.box_y + this.letter_height / 2;
 	
-	var txt = formatLine(this.lines[this.index]);
-	console.log("txt", txt);
-	for (var i = 0; i<txt.length; i++) {
-		if (txt[i] == '\n') {
+	var line = format_line(this.lines[this.line_index]);
+	console.log("line", line);
+	for (var i = 0; i < line.length; i++) {
+		// convert each letter in a map (index, x, y) to be used when drawing text
+		if (line[i] == '\n') {
 			continue;
 		}
 		this.text.push({
-			index: txt[i].charCodeAt(0) - this.asciiOffset + this.spriteOffset,
-			x: this.xx,
-			y: this.yy - this.scale*5 + Math.random()*this.scale*10,
+			index: line[i].charCodeAt(0) - this.ascii_offset + this.sprite_offset,
+			x: this.letter_x,
+			y: this.letter_y - this.scale * 5 + random(this.scale * 10),
 		})
-		this.xx += this.sizeH;
-		if (txt[i+1] == '\n' || this.xx >= room_width - this._xx*2) {
-			this.xx = this._xx;
-			this.yy += this.sizeV;
+		this.letter_x += this.letter_width;
+		if (line[i + 1] == '\n' || this.letter_x >= room_width - this.box_x*2) {
+			// if maximum line width was reached, make sure to draw text in next line
+			this.letter_x = this.box_x;
+			this.letter_y += this.letter_height;
 		}
 	}
 }
 
-function formatLine(line) {
-	var maxLength = (room_width - sizeH) / sizeH;
-	console.log("maxLength", maxLength);
-	var strs = line.split(" ");
-	var currLength = 0;
-	var ret = "";
-	
-	for (var i = 0; i<strs.length; i++) {
-		str = strs[i];
-		if (currLength + str.length +1 > maxLength) {
-			ret += '\n';
-			currLength = 0;
+function format_line(line) {
+	var max_length = (room_width - letter_width) / letter_width;
+	console.log("max_length", max_length);
+	var words = line.split(" ");
+	var current_length = 0;
+	var formatted_line = "";
+
+	for (var i = 0; i < words.length; i++) {
+		word = words[i];
+		if (current_length + word.length + 1 > max_length) {
+			// TODO: Split word (with "-" separator) vs. putting it in the next line
+			// Currently we cannot display words >10 chars
+			formatted_line += '\n';
+			current_length = 0;
 		}
-		if (currLength > 0) {
-			ret += " ";
-			currLength++;
+		if (current_length > 0) {
+			formatted_line += " ";
+			current_length++;
 		}
-		ret += str;
-		currLength += str.length;
-		console.log("format", currLength);
+		formatted_line += word;
+		current_length += word.length; // should it be += formatted_line.length?
+		console.log("format", current_length);
 	}
-	return ret;
+	return formatted_line;
 }
 }
 };
@@ -1703,44 +1805,201 @@ this.on_draw = function() {
 if (this.visible == 1) {
 __handle_sprite__(this);
 with(this) {
+// Skip in case text is not populated yet
 if (typeof this.text == 'undefined' || this.text.length == 0) {
 	return;
 }
 
-// box
-draw_set_color(0, 0, 0);
-draw_set_alpha(0.7);
-draw_rectangle(0, this._yy, room_width, room_height, false);
-draw_set_color(255, 255, 255);
-draw_set_alpha(1);
-var border = global.scale*10;
-draw_set_linewidth(2*this.scale);
-draw_rectangle(border, this._yy + border + this.step, room_width - border, room_height - border + this.step, true);
+// Text box background
+draw_rectangle_ext(
+	0, this.box_y,
+	room_width, room_height,
+	"#5b6a6d", 1, 0, false
+);
 
-// text
-//draw_set_color(0, 0, 0);
+// Text content
 draw_set_alpha(1);
-this.step += this.scale/2;
-if (this.step > this.scale*12) {
-	this.step = 0;
-}
-
 for (var i = 0; i<this.text.length; i++) {
 	draw_sprite_ext(
 		this.font,
 		this.text[i].index,
-		this.text[i].x,
-		this.text[i].y + this.step,
+		this.text[i].x - (random(1) < 0.01 ? 10*global.scale : 0),
+		this.text[i].y + this.offset_v,
 		this.scale,
 		this.scale,
 		0,
-		1);
+		1,
+	);
 }
+
+// Text box outline
+draw_set_linewidth(3 * this.scale);
+var box_border = global.scale *10;
+draw_rectangle_ext(
+	box_border, this.box_y + box_border + this.offset_v,
+	room_width - box_border, room_height - box_border + this.offset_v,
+	global.c_white, 1, this.angle, true
+);
+// Text box overlap outline
+var box_overlap_border = global.scale * 12 + this.angle;
+draw_rectangle_ext(
+	box_border - box_overlap_border, this.box_y + box_border + this.offset_v - box_overlap_border,
+	room_width - box_border - box_overlap_border, room_height - box_border + this.offset_v - box_overlap_border,
+	global.c_white, 0.5, this.angle, true
+);
 
 }
 }
 };
 }; var text_creator = new __text_creator();
+
+function __GFX_MGR() {
+__instance_init__(this, GFX_MGR, null, 1, -999, null, 1, 6);
+this.on_creation = function() {
+with(this) {
+global.GFX_MGR = this;
+
+draw_rectangle = glitch_draw(draw_rectangle);
+draw_rectangle_ext = glitch_draw(draw_rectangle_ext);
+draw_sprite = glitch_draw(draw_sprite);
+draw_sprite_ext = glitch_draw(draw_sprite_ext);
+this.glitch_draw_random = 0;
+this.scanline_offset = 0;
+
+_room_viewport_x = room_viewport_x;
+_room_viewport_y = room_viewport_y;
+
+// TODO remove vvv
+let overlay_canvas = document.createElement("canvas");
+overlay_canvas.width = room_viewport_width; // window.innerWidth;
+overlay_canvas.height = room_viewport_height; // window.innerHeight;
+overlay_canvas.style.position = "absolute";
+overlay_canvas.style.top = room_viewport_y; // "0";
+overlay_canvas.style.left = room_viewport_x; // "0";
+overlay_canvas.style.pointerEvents = "none"; // Prevent interference with game inputs
+document.body.appendChild(overlay_canvas);
+
+this.overlay_canvas = overlay_canvas;
+this.overlay_ctx = this.overlay_canvas.getContext("2d");
+
+let noiseCanvas = document.createElement("canvas");
+noiseCanvas.width = overlay_canvas.width;
+noiseCanvas.height = overlay_canvas.height;
+let noiseCtx = noiseCanvas.getContext("2d");
+
+// Generate static noise once
+for (let i = 0; i < 5000; i++) {
+    let x = Math.random() * noiseCanvas.width;
+    let y = Math.random() * noiseCanvas.height;
+    noiseCtx.fillStyle = `rgba(255,255,255,${Math.random() * 0.1})`;
+    noiseCtx.fillRect(x, y, 1, 1);
+}
+
+this.noiseCanvas = noiseCanvas;
+let blurCanvas = document.createElement("canvas");
+blurCanvas.width = overlay_canvas.width;
+blurCanvas.height = overlay_canvas.height;
+this.blurCanvas = blurCanvas;
+this.blurCtx = this.blurCanvas.getContext("2d");
+let canvas = document.createElement("canvas");
+canvas.width = tu_canvas.width;
+canvas.height = tu_canvas.height;
+let ctx_red_screen = canvas.getContext("2d");
+ctx_red_screen.fillStyle = "rgba(255, 0, 0, 0.3)"; // Red tint
+ctx_red_screen.fillRect(0, 0, room_width, room_height);
+this.red_screen = canvas;
+
+this.vcr_canvas = document.createElement("canvas");
+this.vcr_canvas.width = tu_canvas.width;
+this.vcr_canvas.height = tu_canvas.height;
+this.vcr_ctx = this.vcr_canvas.getContext("2d");
+this.vcr_timer = 0;
+
+}
+};
+this.on_destroy = on_destroy_i;
+this.on_step = function() {
+with(this) {
+if (Math.floor(tu_frame_step) == 0) {
+	glitch_draw_random = random(1); // TODO base it on stress level
+}
+
+if (Math.random() < 0.1) { // screen glitch movement
+	//room_viewport_x += (Math.random() - 0.5) * 5;
+	//room_viewport_y += (Math.random() - 0.5) * 5;
+}
+
+if (Math.random() < 0.01) { // screen reset
+	room_viewport_x = _room_viewport_x;
+	room_viewport_y = _room_viewport_y;
+}
+function drawVHSOverlay() {
+    //overlayCtx.clearRect(overlayCanvas.style.left, overlayCanvas.style.top, overlayCanvas.width, overlayCanvas.height);
+    overlayCtx.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height);
+
+    // Draw scanlines
+    for (let y = 0; y < overlayCanvas.height; y += 6) { 
+        //overlayCtx.fillStyle = "rgba(0, 0, 0, 0.1)";
+        //overlayCtx.fillRect(0, y, overlayCanvas.width, 2);
+    }
+
+    // Apply RGB bleeding effect
+	/*
+    let offset = (Math.random() - 0.5) * 5; // Random horizontal shift
+    overlayCtx.globalCompositeOperation = "screen";
+    
+    overlayCtx.translate(-1 + offset, 0);
+    overlayCtx.fillStyle = "red";
+    overlayCtx.fillRect(0, 0, overlayCanvas.width, overlayCanvas.height);
+
+    overlayCtx.translate(2, 0);
+    overlayCtx.fillStyle = "blue";
+    overlayCtx.fillRect(0, 0, overlayCanvas.width, overlayCanvas.height);
+
+    overlayCtx.globalCompositeOperation = "source-over"; // Reset blending
+*/
+
+    // Apply slight blur
+    //overlayCtx.filter = "blur(1.5px)";
+	blurCtx.filter = "blur(1.5px)";
+	blurCtx.clearRect(0, 0, blurCanvas.width, blurCanvas.height);
+	blurCtx.drawImage(overlayCanvas, 0, 0);
+
+	// Draw the pre-blurred overlay back onto the main canvas
+	overlayCtx.drawImage(blurCanvas, 0, 0);
+
+    // Call again after a delay
+    setTimeout(drawVHSOverlay, 1000 / 30);
+	//requestAnimationFrame(drawVHSOverlay);
+}
+
+// drawVHSOverlay();
+
+}
+};
+this.on_end_step = on_end_step_i;
+this.on_collision = on_collision_i;
+this.on_roomstart = on_roomstart_i;
+this.on_roomend = on_roomend_i;
+this.on_animationend = on_animationend_i;
+this.on_draw = function() {
+if (this.visible == 1) {
+__handle_sprite__(this);
+with(this) {
+draw_noise();
+draw_scanlines();
+draw_vcr();
+if (this.glitch_draw_random > 0.1  && this.glitch_draw_random < 0.5) {
+	slice_screen();
+}
+
+
+
+
+}
+}
+};
+}; var GFX_MGR = new __GFX_MGR();
 
 
 
@@ -1764,7 +2023,7 @@ this.tiles = [
 this.objects = [
 [{o:GOD, x:100, y:60}]];
 this.start = function() {
-__room_start__(this, room_dialogue, 960, 1704, 30, 0, 83, 146, bg_usa_flag.image, 1, 0, 1, 960, 1704, biden_face, 0, 0);
+__room_start__(this, room_dialogue, 960, 1704, 30, 0, 83, 146, bg_usa_flag.image, 1, 0, 1, 960, 1704, null, 0, 0);
 
 /*
 var scale_factor = room_width / room_height;
@@ -1796,6 +2055,317 @@ tu_room_to_go = room_boot;
  * CUSTOM GLOBAL FUNCTIONS
  ***********************************************************************/
 
+function draw_rectangle_ext(x1, y1, x2, y2, color, alpha, angle, outline) { 
+let ctx = tu_canvas.getContext("2d");
+
+let width = x2 - x1;
+let height = y2 - y1;
+let centerX = x1 + width / 2;
+let centerY = y1 + height / 2;
+
+ctx.globalAlpha = alpha;
+ctx.fillStyle = color;
+ctx.strokeStyle = color;
+
+ctx.save();
+ctx.translate(centerX, centerY);
+ctx.rotate(angle * Math.PI / 180);
+
+if (outline) {
+	ctx.strokeRect(-width / 2, -height / 2, width, height);
+} else {
+	ctx.fillRect(-width / 2, -height / 2, width, height);
+}
+
+ctx.restore();
+ctx.globalAlpha = 1.0;
+}
+function glitch_draw(fn) { 
+return function(...args) {
+	if (global.GFX_MGR == undefined) {
+		return;
+	}
+	let rnd = global.GFX_MGR.glitch_draw_random;
+	
+	let ctx = tu_canvas.getContext("2d");
+	ctx.save();
+
+	if (rnd > 0.5 && rnd < 0.51) {
+		console.log("glitch_draw - glitch");
+	    ctx.translate(200*global.scale, 0);
+		//ctx.scale(1.1, 1.1);
+		ctx.globalAlpha = 0.3;
+		ctx.filter = "saturate(0) brightness(250%) "; 
+		// Draw shadow
+		fn(...args);
+		
+		// Reset
+		ctx.restore();
+		ctx.save();  
+		ctx.filter = "none";  
+		ctx.globalAlpha = 1.0;  
+	} else {
+		// Draw original
+		fn(...args);
+	}
+
+	if (rnd < 0.01) {
+		console.log("glitch_draw - screen");
+		ctx.globalCompositeOperation = "screen";
+		ctx.translate(-40*global.scale, 0); 
+		ctx.globalAlpha = 0.5; 
+		// Draw effected
+		fn(...args);
+	}
+	if (rnd > 0.99) {
+		console.log("glitch_draw - lighter");
+		ctx.globalCompositeOperation = "lighter";
+		ctx.translate(15*global.scale, 0);
+		// Draw effected
+		fn(...args);
+	}
+
+	ctx.restore();
+	// Reset drawing settings
+	ctx.globalCompositeOperation = "source-over";
+    ctx.globalAlpha = 1.0;
+};
+
+}
+function draw_noise() { 
+for (let i = 0; i < 3000; i++) {
+	let ctx = tu_canvas.getContext("2d");
+	//ctx.save();
+
+	let x = Math.random() * room_width;
+	let y = Math.random() * room_height;
+	ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.05})`;
+	ctx.fillRect(x, y, 1, 1);
+	
+	//ctx.restore();
+}
+
+}
+function draw_scanlines() { 
+if (!global.GFX_MGR) {
+	return;
+}
+
+let scanline_step = 8;
+let scanline_offset_step = global.scale;
+let ctx = tu_canvas.getContext("2d");
+
+// Update scanline offset ONCE per frame
+global.GFX_MGR.scanline_offset =
+	(global.GFX_MGR.scanline_offset + scanline_offset_step) % (global.scale * scanline_step * 2);
+
+for (let y = global.GFX_MGR.scanline_offset; y < room_height; y += global.scale * scanline_step * 2) {
+	//ctx.globalCompositeOperation = "color-burn";
+	ctx.globalCompositeOperation = "overlay";
+	ctx.globalAlpha = 0.2 + 0.8 * (room_height - y) / room_height;
+	ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+	ctx.fillRect(0, y, room_width, global.scale * scanline_step);
+}
+
+// reset
+ctx.globalCompositeOperation = "source-over";
+ctx.globalAlpha = 1.0;
+}
+function glitch_canvas(fn) { 
+return function() {
+	fn(); // Call original tu_draw function
+
+	let ctx = tu_canvas.getContext("2d");
+	let imageData = ctx.getImageData(0, 0, tu_canvas.width, tu_canvas.height);
+	let pixels = imageData.data;
+
+	// Apply horizontal glitch shifts & RGB distortion
+	for (let y = 0; y < tu_canvas.height; y += 5) {
+		let offset = (Math.random() - 0.5) * 10; // Random horizontal shift
+		ctx.putImageData(imageData, offset, y);
+	}
+
+	ctx.globalCompositeOperation = "lighter"; // Blend colors
+	ctx.filter = "blur(1px)";
+	ctx.putImageData(imageData, 0, 0);
+	ctx.globalCompositeOperation = "source-over";
+};
+
+}
+function glitch_draw_v2(fn) { 
+return function (...args) {
+    if (global.GFX_MGR == undefined) {
+        return;
+    }
+
+    let rnd = global.GFX_MGR.glitch_draw_random;
+    let ctx = tu_canvas.getContext("2d");
+    ctx.save();
+
+    // 🔹 1. Random Flicker Effect (Simulates VHS frame instability)
+    if (Math.random() < 0.05) {
+        ctx.globalAlpha = Math.random() > 0.7 ? 0.2 : 1.0;
+    }
+
+    // 🔹 2. Shadow Ghosting Effect
+    if (rnd > 0.5 && rnd < 0.55) {
+        console.log("glitch_draw - shadow");
+        ctx.scale(1.1, 1.1);
+        ctx.globalAlpha = 0.3;
+        ctx.filter = "brightness(50%) blur(3px)";
+        fn(...args);
+    }
+
+    // 🔹 3. Draw Base Sprite
+    ctx.globalAlpha = 1.0;
+    fn(...args);
+
+    // 🔹 4. RGB Channel Separation
+    if (rnd < 0.05) {
+        console.log("glitch_draw - red shift");
+        ctx.globalCompositeOperation = "screen";
+        ctx.translate(-2 * global.scale, 0); // Slight red channel shift
+        ctx.filter = "brightness(1.2)";
+        fn(...args);
+    }
+    if (rnd > 0.95) {
+        console.log("glitch_draw - blue shift");
+        ctx.globalCompositeOperation = "lighter";
+        ctx.translate(2 * global.scale, 0); // Opposite shift for blue
+        fn(...args);
+    }
+
+    // 🔹 5. Scanline Wobble Effect
+    if (rnd > 0.7) {
+        ctx.translate(0, Math.sin(Date.now() * 0.01) * 3); // Small Y wobble
+    }
+
+    ctx.restore();
+
+    // Reset blending mode & transparency
+    ctx.globalCompositeOperation = "source-over";
+    ctx.globalAlpha = 1.0;
+};
+
+}
+function glitch_draw_v3(fn) { 
+return function(...args) {
+    let ctx = tu_canvas.getContext("2d");
+
+    // Get sprite position and size
+    let x = args[1], y = args[2], width = args[3] || 64, height = args[4] || 64;
+
+    // Create an offscreen canvas matching the sprite size
+    let buffer_canvas = document.createElement("canvas");
+    buffer_canvas.width = room_width;
+    buffer_canvas.height = room_height;
+    let buffer_ctx = buffer_canvas.getContext("2d");
+
+    buffer_ctx.clearRect(0, 0, room_width, room_height);
+    
+    // Step 1: Draw the sprite onto the buffer
+    buffer_ctx.save();
+    fn.apply(buffer_ctx, args);
+    buffer_ctx.restore();
+
+    // Step 2: Apply the red tint only inside the sprite area
+    buffer_ctx.globalCompositeOperation = "source-atop";
+    buffer_ctx.fillStyle = "red";
+    buffer_ctx.fillRect(0, 0, width, height);
+    buffer_ctx.globalCompositeOperation = "source-over";
+
+    // Step 3: Draw the tinted sprite back onto the main canvas
+    ctx.drawImage(buffer_canvas, x, y);
+};
+
+}
+function draw_vcr() { 
+if (global.GFX_MGR === undefined) {
+	return;
+}
+
+const canvas = global.GFX_MGR.vcr_canvas;
+const ctx = global.GFX_MGR.vcr_ctx;
+let posy1 = 0;
+let posy2 = canvas.height;
+let posy3 = 0;
+const num = 20;
+radius = 2;
+xmax = canvas.width;
+ymax = canvas.height;		
+
+//canvas.style.filter = `blur(2px)`;
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+ctx.fillStyle = `#fff`;
+
+ctx.beginPath();
+for (var i = 0; i <= num; i++) {
+	var x = Math.random(i) * xmax;
+	var y1 = (posy1+=3) + random(posy2);
+	var y2 = random(posy3-=3);
+	ctx.fillRect(x, y1, radius, radius);
+	ctx.fillRect(x, y2, radius, radius);
+	ctx.fill();
+
+	this.render_tail(ctx, x, y1, radius);
+	this.render_tail(ctx, x, y2, radius);
+}
+ctx.closePath();
+
+let tu_ctx = tu_canvas.getContext("2d");
+tu_ctx.globalCompositeOperation = "screen"; 
+tu_ctx.filter = "blur(2px)";
+tu_ctx.drawImage(canvas, 0, 0);
+tu_ctx.globalCompositeOperation = "source-over";
+}
+function render_tail(ctx, x, y, radius) { 
+const n = 1 + random(50);
+
+const dirs = [1, -1];
+let rd = radius;
+const dir = dirs[Math.floor(Math.random() * dirs.length)];
+for (let i = 0; i < n; i++) {
+	const step = 0.01;
+	let r = (rd -= step) + random(radius);
+	let dx = 1 + random(4);
+
+	radius -= 0.1;
+
+	dx *= dir;
+
+	ctx.fillRect((x += dx), y, r, r);
+	ctx.fill();
+}
+}
+function slice_screen() { 
+if (global.GFX_MGR === undefined) {
+	return;
+}
+
+const canvas = global.GFX_MGR.vcr_canvas;
+const ctx = global.GFX_MGR.vcr_ctx;
+if (Math.floor(tu_frame_step) == 0) {
+    let width = canvas.width;
+    let height = canvas.height;
+    let slice_height = height/24; // Make slices bigger for visibility
+
+    ctx.clearRect(0, 0, width, height);
+
+    // 🟢 First, draw the full tu_canvas onto vcr_canvas
+    ctx.drawImage(tu_canvas, 0, 0);  
+
+    // 🟥 Apply horizontal slice shifting (VCR distortion)
+    for (let y = 0; y < height; y += slice_height) {
+        let shift = (Math.random() - 0.5) * 20; // Stronger shift effect
+        ctx.drawImage(canvas, 0, y, width, slice_height, shift, y, width, slice_height);
+    }
+}
+
+let tu_ctx = tu_canvas.getContext("2d");
+tu_ctx.globalCompositeOperation = "screen"; 
+tu_ctx.drawImage(canvas, 0, 0);
+tu_ctx.globalCompositeOperation = "source-over";
+}
 
 
 tu_gameloop = tu_loop;
